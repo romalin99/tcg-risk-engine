@@ -1,0 +1,88 @@
+// Copyright (c) 2023
+//
+// @author norman
+// https://github.com/romalin99/tcg-risk-engine.git
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+package core
+
+import (
+	"github.com/skyhackvip/risk_engine/internal/errcode"
+	"github.com/skyhackvip/risk_engine/internal/log"
+	"github.com/skyhackvip/risk_engine/internal/operator"
+)
+
+type ConditionalNode struct {
+	Info    NodeInfo `yaml:"info"`
+	Branchs []Branch `yaml:"branchs,flow"`
+}
+
+func (node ConditionalNode) GetName() string {
+	return node.Info.Name
+}
+
+func (node ConditionalNode) GetType() NodeType {
+	return GetNodeType(node.Info.Kind)
+}
+
+func (node ConditionalNode) GetInfo() NodeInfo {
+	return node.Info
+}
+
+func (node ConditionalNode) BeforeParse(ctx *PipelineContext) error {
+	return nil
+}
+
+func (node ConditionalNode) AfterParse(ctx *PipelineContext, result *NodeResult) error {
+	return nil
+}
+
+func (conditional ConditionalNode) Parse(ctx *PipelineContext) (*NodeResult, error) {
+	info := conditional.GetInfo()
+	log.Infof("====[trace] conditional %s start=====", info.Label, conditional.GetName())
+	nodeResult := &NodeResult{Id: info.Id, Name: info.Name, Kind: conditional.GetType(), Tag: info.Tag, Label: info.Label, IsBlock: false}
+
+	depends := ctx.GetFeatures(info.Depends)
+	var matchBranch bool
+	for _, branch := range conditional.Branchs { //loop all the branch
+		var conditionRet = make(map[string]bool, 0)
+		for _, condition := range branch.Conditions {
+			if feature, ok := depends[condition.Feature]; ok {
+				rs, err := feature.Compare(condition.Operator, condition.Value)
+				if err != nil {
+					return nil, err
+				}
+				conditionRet[condition.Name] = rs
+			} else { //get feature fail
+				log.Errorf("error lack of feature: %s", condition.Feature)
+				continue
+			}
+		}
+		if len(conditionRet) == 0 { //current branch not match
+			continue
+		}
+		logicRs, err := operator.EvaluateBoolExpr(branch.Decision.Logic, conditionRet)
+		if err != nil {
+			continue
+		}
+		if logicRs { //if true, choose the branch and break
+			log.Infof("conditional name %s, branch %s, output %s", conditional.GetName(), branch.Name, branch.Decision.Output)
+			nodeResult.Value = branch.Name
+			nodeResult.NextNodeName = branch.Decision.Output.Value.(string)
+			nodeResult.NextNodeType = GetNodeType(branch.Decision.Output.Kind)
+			matchBranch = true
+			break
+		}
+	}
+	log.Infof("====[trace] conditional %s end=====", info.Label, conditional.GetName())
+	if matchBranch {
+		return nodeResult, nil
+	}
+	return nodeResult, errcode.ParseErrorNoBranchMatch //can't find any branch
+
+}
