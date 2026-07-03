@@ -12,7 +12,7 @@
 package log
 
 import (
-	"github.com/skyhackvip/risk_engine/configs"
+	"github.com/romalin99/tcg-risk-engine/configs"
 	"gopkg.in/natefinch/lumberjack.v2"
 	"log"
 	"os"

@@ -13,10 +13,10 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/skyhackvip/risk_engine/core"
-	"github.com/skyhackvip/risk_engine/internal/dto"
-	"github.com/skyhackvip/risk_engine/internal/log"
-	"github.com/skyhackvip/risk_engine/service"
+	"github.com/romalin99/tcg-risk-engine/core"
+	"github.com/romalin99/tcg-risk-engine/internal/dto"
+	"github.com/romalin99/tcg-risk-engine/internal/log"
+	"github.com/romalin99/tcg-risk-engine/service"
 	"net/http"
 )
 

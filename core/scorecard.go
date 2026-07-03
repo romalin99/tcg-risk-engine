@@ -12,9 +12,9 @@
 package core
 
 import (
-	"github.com/skyhackvip/risk_engine/global"
-	"github.com/skyhackvip/risk_engine/internal/log"
-	"github.com/skyhackvip/risk_engine/internal/util"
+	"github.com/romalin99/tcg-risk-engine/global"
+	"github.com/romalin99/tcg-risk-engine/internal/log"
+	"github.com/romalin99/tcg-risk-engine/internal/util"
 )
 
 type ScorecardNode struct {

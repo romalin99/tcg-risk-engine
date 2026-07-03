@@ -14,7 +14,7 @@ package core
 import (
 	"errors"
 	"fmt"
-	"github.com/skyhackvip/risk_engine/internal/log"
+	"github.com/romalin99/tcg-risk-engine/internal/log"
 )
 
 type DecisionFlow struct {

@@ -12,7 +12,7 @@
 package global
 
 import (
-	"github.com/skyhackvip/risk_engine/configs"
+	"github.com/romalin99/tcg-risk-engine/configs"
 )
 
 var (

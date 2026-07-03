@@ -12,8 +12,8 @@
 package util
 
 import (
-	"github.com/skyhackvip/risk_engine/configs"
-	"github.com/skyhackvip/risk_engine/internal/errcode"
+	"github.com/romalin99/tcg-risk-engine/configs"
+	"github.com/romalin99/tcg-risk-engine/internal/errcode"
 	"reflect"
 	"regexp"
 	"strconv"

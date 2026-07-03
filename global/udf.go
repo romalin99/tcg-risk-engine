@@ -12,7 +12,7 @@
 package global
 
 import (
-	"github.com/skyhackvip/risk_engine/internal/udf"
+	"github.com/romalin99/tcg-risk-engine/internal/udf"
 	"sync"
 )
 

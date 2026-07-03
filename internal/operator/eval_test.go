@@ -14,7 +14,7 @@ package operator
 import (
 	"testing"
 
-	"github.com/skyhackvip/risk_engine/internal/log"
+	"github.com/romalin99/tcg-risk-engine/internal/log"
 )
 
 func init() {

@@ -12,7 +12,7 @@
 package core
 
 import (
-	"github.com/skyhackvip/risk_engine/configs"
+	"github.com/romalin99/tcg-risk-engine/configs"
 )
 
 //各类型节点实现该接口

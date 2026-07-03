@@ -14,9 +14,9 @@ package api
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"github.com/skyhackvip/risk_engine/core"
-	"github.com/skyhackvip/risk_engine/global"
-	"github.com/skyhackvip/risk_engine/internal/log"
+	"github.com/romalin99/tcg-risk-engine/core"
+	"github.com/romalin99/tcg-risk-engine/global"
+	"github.com/romalin99/tcg-risk-engine/internal/log"
 )
 
 func Init() { //conf

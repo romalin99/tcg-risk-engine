@@ -12,8 +12,8 @@
 package udf
 
 import (
-	"github.com/skyhackvip/risk_engine/configs"
-	"github.com/skyhackvip/risk_engine/internal/util"
+	"github.com/romalin99/tcg-risk-engine/configs"
+	"github.com/romalin99/tcg-risk-engine/internal/util"
 	"reflect"
 )
 

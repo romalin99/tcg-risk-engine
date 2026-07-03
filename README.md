@@ -1,6 +1,6 @@
-# 天网决策引擎系统
-[![License](https://img.shields.io/:license-apache%202-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![GoDoc](https://godoc.org/github.com/skyhackvip/risk_engine?status.png)](https://godoc.org/github.com/skyhackvip/risk_engine)
-[![Go Report Card](https://goreportcard.com/badge/github.com/skyhackvip/risk_engine)](https://goreportcard.com/report/github.com/skyhackvip/risk_engine)
+# AI封控引擎系统
+[![License](https://img.shields.io/:license-apache%202-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![GoDoc](https://godoc.org/github.com/romalin99/tcg-risk-engine?status.png)](https://godoc.org/github.com/romalin99/tcg-risk-engine)
+[![Go Report Card](https://goreportcard.com/badge/github.com/romalin99/tcg-risk-engine)](https://goreportcard.com/report/github.com/romalin99/tcg-risk-engine)
 
 ## 开源声明
 本项目用于学习和参考，采用 Apache License, Version 2.0 开源，转载使用请说明出处。代码不定期迭代更新，欢迎 Star & Watch，如需交流请添加公众号“技术岁月”。
@@ -8,7 +8,7 @@
 ## 关于版本
 最新更新稳定版本为 master 分支。
 
-## 天网决策引擎系统介绍
+## AI封控引擎系统介绍
 决策引擎系统，是构建于规则引擎和流程引擎基础上，满足复杂业务决策的一套系统，可用于反欺诈、信用评估、风险决策、推荐系统、精准营销、内容审核、数据清洗等领域场景。
 
 风控是决策引擎的一个重要应用场景，在金融、保险、电商、支付、游戏、社交等领域皆有应用，凡是和钱相关的业务都离不开风控决策引擎系统的支持保障。目前流行的“智能风控”，即是以决策引擎为核心驱动，以机器学习 / AI 为大脑，在大数据基础上构建的通用风控能力。而决策引擎作为风控的核心系统，承担着复杂规则和多样化决策需求，这款开源决策引擎即满足了这样的诉求。
@@ -38,17 +38,17 @@
 - 代码下载  
 
 ```shell
-git clone git@github.com:skyhackvip/risk_engine.git
+git clone git@github.com:romalin99/tcg-risk-engine.git
 ```
 
 - 访问下载：  
 
-[https://github.com/skyhackvip/risk_engine/](https://github.com/skyhackvip/risk_engine/)
+[https://github.com/romalin99/tcg-risk-engine/](https://github.com/romalin99/tcg-risk-engine/)
 
 
 - Make 编译执行（推荐）
 ```shell
-cd risk_engine/
+cd tcg-risk-engine/
 
 #编译
 make build
@@ -63,7 +63,7 @@ make stop
 
 - Go 编译执行
 ```shell
-cd risk_engine/
+cd tcg-risk-engine/
 
 #编译
 mkdir -p dist/conf dist/bin
@@ -82,7 +82,7 @@ pkill -f bin/risk_engine
 
 - Docker 镜像制作启动
 ```shell
-cd risk_engine/
+cd tcg-risk-engine/
 
 #制作镜像
 docker build -t risk_engine:v1 .

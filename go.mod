@@ -1,4 +1,4 @@
-module github.com/skyhackvip/risk_engine
+module github.com/romalin99/tcg-risk-engine
 
 go 1.26.4
 

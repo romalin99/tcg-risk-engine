@@ -12,11 +12,11 @@
 package core
 
 import (
-	"github.com/skyhackvip/risk_engine/configs"
-	"github.com/skyhackvip/risk_engine/internal/errcode"
-	"github.com/skyhackvip/risk_engine/internal/log"
-	"github.com/skyhackvip/risk_engine/internal/operator"
-	"github.com/skyhackvip/risk_engine/internal/util"
+	"github.com/romalin99/tcg-risk-engine/configs"
+	"github.com/romalin99/tcg-risk-engine/internal/errcode"
+	"github.com/romalin99/tcg-risk-engine/internal/log"
+	"github.com/romalin99/tcg-risk-engine/internal/operator"
+	"github.com/romalin99/tcg-risk-engine/internal/util"
 	"strings"
 	"time"
 )
