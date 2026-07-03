@@ -13,22 +13,39 @@ package operator
 
 import (
 	"errors"
-	"github.com/Knetic/govaluate"
+
+	"github.com/expr-lang/expr"
 	"github.com/skyhackvip/risk_engine/internal/log"
 )
 
-//using govalute to execute expression
+// EvaluateExpr compiles exprStr against params and returns the raw result.
+// It is backed by expr-lang/expr (https://github.com/expr-lang/expr) and
+// replaces the previous govaluate based implementation. Any expression that
+// expr supports is accepted, including builtins such as max/min/len and the
+// in / contains operators, e.g. `score > 60 && city in ["bj", "sh"]`.
+func EvaluateExpr(exprStr string, params map[string]interface{}) (interface{}, error) {
+	program, err := expr.Compile(exprStr, expr.Env(params))
+	if err != nil {
+		log.Infof("compile expr error: %s, %v", exprStr, err)
+		return nil, err
+	}
+	output, err := expr.Run(program, params)
+	if err != nil {
+		log.Infof("run expr error: %s, %v", exprStr, err)
+		return nil, err
+	}
+	return output, nil
+}
+
+// Evaluate runs a boolean expression and returns its bool result.
+// It preserves the original govaluate-based contract: expressions whose
+// result is not a bool return a "convert error".
 func Evaluate(exprStr string, params map[string]interface{}) (bool, error) {
-	expr, err := govaluate.NewEvaluableExpression(exprStr)
-	log.Infof("base evaluate: %v", expr, params)
+	output, err := EvaluateExpr(exprStr, params)
 	if err != nil {
 		return false, err
 	}
-	eval, err := expr.Evaluate(params)
-	if err != nil {
-		return false, err
-	}
-	if result, ok := eval.(bool); ok {
+	if result, ok := output.(bool); ok {
 		return result, nil
 	}
 	return false, errors.New("convert error")

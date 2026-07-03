@@ -3,7 +3,7 @@ module github.com/skyhackvip/risk_engine
 go 1.26.4
 
 require (
-	github.com/Knetic/govaluate v3.0.0+incompatible
+	github.com/expr-lang/expr v1.17.8
 	github.com/gin-gonic/gin v1.6.3
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 	gopkg.in/yaml.v2 v2.3.0
